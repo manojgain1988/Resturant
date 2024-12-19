@@ -1,0 +1,61 @@
+{% extends "base.html" %}
+{% load static %}
+
+{% block title %}
+{% endblock title %} 
+
+{% block class %}class="sub_page"{% endblock class %}
+{% block feedback-status %} active {% endblock feedback-status %}
+
+
+{% block content %}
+<h1 class='text-center mt-3 text-decoration-underline'>This is my Feedback page</h1>
+  
+<!-- book section -->
+  <section class="book_section layout_padding">
+    <div class="container">
+      <div class="heading_container">
+        <h2>
+          Feedback page
+        </h2>
+      </div>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="form_container">
+
+            <form action="{% url 'book'%}" method="POST">
+                {% csrf_token %}
+
+              <div>
+                <input type="text" class="form-control"  name="user_name" placeholder="Your Name"/>
+              </div>
+
+              <div>
+                <textarea name="message" class="form-control" rows='4' cols='10' placeholder="Describe Your Exprience Here ?"></textarea>
+              </div>
+             
+              <div class=mt-4>
+                <select class="form-control nice-select wide" name="total_person">
+                  <option value="" disabled selected>Please Give Us Rating ?</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            
+              <label for="myfile">Select a file:</label>
+              <input type="file" id="myfile" name="myfile">
+              
+              <div class="btn_box"><button>Submit</button></div>
+            </form>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </section>
+  <!-- end book section -->
+
+{% endblock content %}
